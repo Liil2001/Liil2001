@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="输入.css"> -->
+    <title>Document</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: cadetblue;
+    justify-content: center;
+}
+.wavy{
+    text-align: center;
+    margin: 100px 0;
+    -webkit-box-reflect: below -2px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    position: relative;
+}
+.wavy span{
+    position: relative;
+    font-size: 50px;
+    display: inline-block;
+    animation: mywavy 1s ease-in-out infinite;
+    animation-delay: calc(.1s*var(--i));
+}
+@keyframes mywavy{
+    0%{
+        transform: translateY(0PX);
+    }
+    20%{
+        transform: translateY(-24PX);
+    }
+    40%,100%{
+        transform: translateY(0PX);
+    }
+}
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container .box{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .box span{
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px gold solid;
+    border-radius: 50%;
+    animation: myround 5s linear infinite;
+    animation-delay: calc(.2s*var(--j));
+}
+@keyframes myround{
+    0%{
+        width: 0; 
+        height: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{   
+        opacity: 0;
+        width: 300px;
+        height: 300px;
+    }
+}
+.search-box{
+    position:relative;
+    margin-bottom: 200px;
+    margin-left: 300px;
+    width: 60px;
+    height: 60px;
+    width: 300px;
+    height: 350px;
+    border: 2px solid black;
+    border-radius: 15%;
+    box-shadow: 0px 10px 50px 1px pink;
+}
+.search-box h1{
+    margin-left: 110px;
+}
+.key{
+    padding: 80px 45px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+.key input{ 
+    height: 40px;
+    padding: 0 20px;
+    background: none;
+    border: 1px black solid;
+    outline: none;
+    border-radius: 10px;
+}
+.key input :focus{
+    border: none;
+    outline: none;
+}
+.button{
+    padding: 20px;
+    position: absolute;
+    transform: translate(50%,-50%);
+}
+.btn1,.btn2{
+    background: none;
+    border: 1px solid black;
+    padding: 5px 5px;
+}
+
+.btncontent{
+    border-radius: 20%;
+    background-color: gray;
+
+}
+.btn1,.btn2:hover .btncontent{
+    border-radius: 10%;
+
+}
+video{
+    margin-left: 110px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="wavy">
+        <span style="--i:1">H</span>
+        <span style="--i:2">E</span>
+        <span style="--i:3">L</span>
+        <span style="--i:4">L</span>
+        <span style="--i:5">O</span>
+        <span style="--i:6">W</span>
+        <span style="--i:7">O</span>
+        <span style="--i:8">R</span>
+        <span style="--i:9">L</span>
+        <span style="--i:10">D</span>
+        <span style="--i:11">.</span>
+        <span style="--i:12">.</span>
+        <span style="--i:13">.</span>
+    </div>
+    <div class="container">
+      <div class="box">
+        <span style="--j:1"></span>
+        <span style="--j:2"></span>
+        <span style="--j:3"></span>
+        <span style="--j:4"></span>
+        <span style="--j:5"></span>
+        <span style="--j:6"></span>
+        <span style="--j:7"></span>
+        <span style="--j:8"></span>
+      </div>
+    </div>
+
+    <div class="search-box">
+        <h1>界面</h1>
+        <div class="key">
+            <input type="text" placeholder="请输入账户名...">
+            <input type="text" placeholder="请输入密码...">
+        </div>
+        <div class="button">
+            <button class="btn1">sign in</button>
+            <button class="btn2">register</button>
+        </div>
+    </div>
+
+    <video src="video\hixrat--pipe.mp4" type="video/mp4" width="auto" height="auto"></video>
+    <video id="video1" width="420">
+        <source src="video\hixrat--pipe.mp4" type="video/mp4">
+        您的浏览器不支持 HTML5 video 标签。
+      </video>
+      <video src="video\hixrat--pipe.mp4" muted autoplay loop></video>
+</body>
+</html>
