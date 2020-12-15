@@ -1,74 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background:linear-gradient(#8fd0ca,#fdf3da,#bcb7bb,#a0d7f5);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            background: none;
+            cursor: pointer;
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            outline: none;
+            margin-top: 100px;
+        }
+
+        .big {
+            display: none;
+            position: absolute;
+            top: 50px;
+            width: 500px;
+            height: 500px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 1000px;
+        }
+
+        .one {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 30px;
+            background-color: skyblue;
+            box-shadow: 0px 10px 1000px 1000px;
+        }
+
+        .close {
+            position: relative;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+
+        .close:hover {
+            font-weight: 400;
+            color: red;
+            transform: scale(2.5);
+        }
+
+        .head {
+            font-size: 40px;
+            font-weight: 700;
+            margin-top: 50px;
+        }
+
+        .search {
+            display: flex;
+            margin-top: 80px;
+        }
+
+        .search input {
+            width: 200px;
+            height: 20px;
+            outline: none;
+            background: none;
+            border: 1px black solid;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+        }
+
+        .search input::placeholder {
+            font-size: 3px;
+            color: gray;
+        }
+
+        .search p {
+            font-size: 1px;
+            color: snow;
+            line-height: 20px;
+            background-color: black;
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+            cursor: pointer;
+        }
+
+        .eye {
+            position: absolute;
+            left: 63%;
+            top: 14.3%;
+            width: 15px;
+            height: 10px;
+            background-image: url(images/眼睛.png);
+            background-size: 210%;
+            background-position: -45px -0.1px;
+        }
+
+        .eye_change {
+            position: absolute;
+            left: 63%;
+            top: 14.3%;
+            width: 15px;
+            height: 10px;
+            background-image: url(images/眼睛.png);
+            background-size: 210%;
+            background-position: 190px -0.1px;
+        }
+
+        .remind {
+            display: flex;
+            font-size: 10px;
+        }
+
+        .remind div {
+            margin-top: 3px;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+
+        .yes {
+            margin-top: 150px;
+            background: none;
+            outline: none;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- <div class="box"></div> -->
-    <div class="first">
-        <div class="heart">
-          <p></p>
+    <button class="btn">登录</button>
+    <div class="big">
+        <div class="one">
+            <p class="close">x</p>
+            <p class="head">search</p>
+            <div class="search">
+                <input type="text" placeholder="搜索...">
+                <p>搜索</p>
+                <div class="eye"></div>
+            </div>
+            <div class="remind">
+                <div></div>
+                <p class="remind">请输入6-10位!</p>
+            </div>
+            <button class="yes">确定</button>
         </div>
     </div>
 
+    <script>
+        var btn = document.querySelector('.btn');
+        var big = document.querySelector('.big');
+        var div = document.querySelector('.one');
+        var inp = document.querySelector('input')
+        var close = div.querySelector('p');
+        //登录框显示
+        btn.onclick = function () {
+            big.style.display = 'block';
+        }
+        //变颜色
+        div.onclick = function () {
+            if (div.style.backgroundColor == 'skyblue') {
+                div.style.backgroundColor = 'pink';
+            }
+            else {
+                div.style.backgroundColor = 'skyblue';
+            }
+        }
+        close.onclick = function () {
+            big.style.display = 'none';
+        }
+        //密码显隐
+        var see = document.querySelector('.eye');
+        see.onclick = function () {
+            this.className = 'eye';
+            if (!inp.value == '') {
+                if ((inp.type == 'text')) {
+                    inp.type = 'password';
+                    this.className = 'eye_change';
+                } else {
+                    inp.type = 'text';
+                    this.className = 'eye';
+                }
+            }
+        }
+        //焦点失去获得 placeholder的用法 默认字体
+        inp.onfocus = function () {
+            this.placeholder = '';
+        }
+        inp.onblur = function () {
+            this.placeholder = '搜索...';
+        }
+        //判断输入位数
+        inp.onblur = function () {
+            var remind = document.querySelector('.remind');
+            if (this.value == '') {
+                remind.children[1].innerHTML = '请输入6-10位!';
+                remind.children[0].style.backgroundColor = 'yellow';
+            }
+            else {
+                if (this.value.length < 6 || this.value.length > 10) {
+                    remind.children[1].innerHTML = '输入错误，请重新输入!';
+                    remind.children[0].style.backgroundColor = 'red';
+                    yes.disabled=true;
+                } else {
+                    remind.children[1].innerHTML = '输入正确!';
+                    remind.children[0].style.backgroundColor = 'green';
+                    yes.disabled=false;
 
-    <!-- 宇宙 -->
-    <div class="solarsys">
-        <!--太阳-->
-        <div class='sun'></div>
-      
-        <!--水星轨道-->
-        <div class='mercuryOrbit'></div>
-      
-        <!--水星-->
-        <div class='mercury'></div>
-      
-        <!--金星轨道-->
-        <div class='venusOrbit'></div>
-      
-        <!--金星-->
-        <div class='venus'></div>
-      
-        <!--地球轨道-->
-        <div class='earthOrbit'></div>
-      
-        <!--地球-->
-        <div class='earth'></div>
-      
-        <!--火星轨道-->
-        <div class='marsOrbit'></div>
-      
-        <!--火星-->
-        <div class='mars'></div>
-      
-        <!--木星轨道-->
-        <div class='jupiterOrbit'></div>
-      
-        <!--木星-->
-        <div class='jupiter'></div>
-      
-        <!--土星轨道-->
-        <div class='saturnOrbit'></div>
-      
-        <!--土星-->
-        <div class='saturn'></div>
-      
-        <!--天王星轨道-->
-        <div class='uranusOrbit'></div>
-      
-        <!--天王星-->
-        <div class='uranus'></div>
-      
-        <!--海王星轨道-->
-        <div class='neptuneOrbit'></div>
-      
-        <!--海王星-->
-        <div class='neptune'></div>
-      </div>
-      
-      
-      
+                }
+            }
+
+        }
+        //弹窗
+        var yes = document.querySelector('.yes');
+        yes.onclick = function () {
+            var i = 1;
+            while (i < 3) {
+                alert('😜');
+                i++;
+            }
+        }
+
+    </script>
+</body>
+
 </html>
