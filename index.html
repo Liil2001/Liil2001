@@ -4,250 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYH's web page</title>
+    <title>LYH</title>
     <style>
         * {
             padding: 0;
             margin: 0;
         }
-
+        
         body {
-            background:linear-gradient(#8fd0ca,#fdf3da,#bcb7bb,#a0d7f5);
+            /*五彩虹*/
+            background: linear-gradient(#fb948f, #e7b99f, #ebd1b0, #9aabb5, #4280a5);
             background-repeat: no-repeat;
             background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-width: 400px;
-            min-height:800px;
         }
-
-        .btn {
-            background: none;
-            cursor: pointer;
-            width: 100px;
-            height: 50px;
-            border-radius: 10px;
-            outline: none;
-            margin-top: 100px;
+        
+        .body_a {
+            /*五彩虹*/
+            background: linear-gradient(#fb948f, #e7b99f, #ebd1b0, #9aabb5, #4280a5);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-
-        .big {
-            display: none;
+        
+        .body_b {
+            /*水蜜桃*/
+            background: linear-gradient(#fbb6a6, #fbd5cc, #f4eae8, #f6dbc0, #fec89c);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .body_c {
+            /*青山雾*/
+            background: linear-gradient(#c7d8e6, #67a1ad, #05525a, #003543, #5a878c);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .reminder {
+            display: block;
             position: absolute;
-            top: 50px;
-            width: 500px;
-            height: 500px;
-            border-radius: 30px;
-            box-shadow: 10px 10px 1000px;
-        }
-
-        .one {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 30px;
-            background-color: skyblue;
-            box-shadow: 0px 10px 1000px 1000px;
-        }
-
-        .close {
-            position: relative;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: 0.5s;
-        }
-
-        .close:hover {
-            font-weight: 400;
-            color: red;
-            transform: scale(2.5);
-        }
-
-        .head {
-            font-size: 40px;
+            width: 230px;
+            height: 80px;
+            left: 50%;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            line-height: 5;
             font-weight: 700;
-            margin-top: 50px;
+            text-align: center;
+            border: 1px white solid;
+            border-radius: 20px;
+            box-shadow: seashell 1px 1px 100px 0px;
+            transform: translate(-50%, 10%);
+            z-index: 11;
+            animation: reminder_display 5s ease-in-out;
         }
-
-        .search {
+        
+        @keyframes reminder_display {
+            0% {
+                opacity: 0.8;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            60% {
+                opacity: 0.4;
+            }
+            80% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 0.0;
+            }
+        }
+        
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+            animation: mask_display 5s ease-in-out;
+        }
+        
+        @keyframes mask_display {
+            0% {
+                background: rgba(0, 0, 0, 0.8);
+            }
+            25% {
+                background: rgba(0, 0, 0, 0.8);
+            }
+            50% {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            75% {
+                background: rgba(0, 0, 0, 0.2);
+            }
+            100% {
+                background: rgba(0, 0, 0, 0.0);
+            }
+        }
+        
+        .right {
+            position: relative;
+        }
+        
+        .right_side {
+            display: none;
+            height: 100%;
             display: flex;
-            margin-top: 80px;
+            flex-direction: column;
+            position: fixed;
+            right: 0;
+            background: rgb(0, 0, 0, .2);
+            width: 360px;
         }
-
-        .search input {
-            width: 200px;
-            height: 20px;
-            outline: none;
-            background: none;
-            border: 1px black solid;
-            border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
-
+        
+        .right .back {
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: 0;
+            cursor: pointer;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 1.2;
+            text-align: center;
+            z-index: 2;
         }
-
-        .search input::placeholder {
-            font-size: 3px;
-            color: gray;
+        
+        .right_side_con {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
         }
-
-        .search p {
-            font-size: 1px;
-            color: snow;
-            line-height: 20px;
-            background-color: black;
-            border-bottom-right-radius: 2px;
-            border-top-right-radius: 2px;
+        
+        .right_side_con li {
+            margin-top: 10px;
+        }
+        
+        .BackGroundColor.a,
+        .BackGroundColor.b,
+        .BackGroundColor.c {
+            font-size: 10px;
+            text-align: center;
             cursor: pointer;
         }
-
-        .eye {
-            position: absolute;
-            left: 63%;
-            top: 14.3%;
-            width: 15px;
-            height: 10px;
-            background-image: url(images/眼睛.png);
-            background-size: 210%;
-            background-position: -45px -0.1px;
+        
+        .BackGroundColor.a {
+            color: #fb948f;
         }
-
-        .eye_change {
-            position: absolute;
-            left: 63%;
-            top: 14.3%;
-            width: 15px;
-            height: 10px;
-            background-image: url(images/眼睛.png);
-            background-size: 210%;
-            background-position: 190px -0.1px;
+        
+        .BackGroundColor.b {
+            color: #ebd1b0;
         }
-
-        .remind {
-            display: flex;
-            font-size: 10px;
-        }
-
-        .remind div {
-            margin-top: 3px;
-            margin-right: 5px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: yellow;
-        }
-
-        .yes {
-            margin-top: 150px;
-            background: none;
-            outline: none;
-            width: 70px;
-            height: 30px;
-            border-radius: 5px;
+        
+        .BackGroundColor.c {
+            color: #05525a;
         }
     </style>
 </head>
 
 <body>
-    <button class="btn">登录</button>
-    <div class="big">
-        <div class="one">
-            <p class="close">x</p>
-            <p class="head">search</p>
-            <div class="search">
-                <input type="text" placeholder="搜索...">
-                <p>搜索</p>
-                <div class="eye"></div>
+    <span class="reminder">欢迎来到 LYH's web page</span>
+    <div class="mask"></div>
+    <div class="right">
+        <span class="back">></span>
+        <div class="right_side">
+            <div class="right_side_con">
+                <li class="GetCursorPos">鼠标位置：<span>(0,0)</span></li>
+                <li class="BackGroundColor">背景颜色：<span class="BackGroundColor a">五彩虹</span>&nbsp;<span class="BackGroundColor b">水蜜桃</span>&nbsp;<span class="BackGroundColor c">青山雾</span></li>
+                <li class="PageLocation">页面地址：<span class="PageLocation_con"></span></li>
+                <li>护眼模式切换：<span>开</span></li>
+                <li>111<span>222</span></li>
             </div>
-            <div class="remind">
-                <div></div>
-                <p class="remind">请输入6-10位!</p>
-            </div>
-            <button class="yes">确定</button>
         </div>
     </div>
 
-    <script>
-        var btn = document.querySelector('.btn');
-        var big = document.querySelector('.big');
-        var div = document.querySelector('.one');
-        var inp = document.querySelector('input')
-        var close = div.querySelector('p');
-        //登录框显示
-        btn.onclick = function () {
-            big.style.display = 'block';
-        }
-        //变颜色
-        div.onclick = function () {
-            if (div.style.backgroundColor == 'skyblue') {
-                div.style.backgroundColor = 'pink';
-            }
-            else {
-                div.style.backgroundColor = 'skyblue';
-            }
-        }
-        close.onclick = function () {
-            big.style.display = 'none';
-        }
-        //密码显隐
-        var see = document.querySelector('.eye');
-        see.onclick = function () {
-            this.className = 'eye';
-            if (!inp.value == '') {
-                if ((inp.type == 'text')) {
-                    inp.type = 'password';
-                    this.className = 'eye_change';
-                } else {
-                    inp.type = 'text';
-                    this.className = 'eye';
-                }
-            }
-        }
-        //焦点失去获得 placeholder的用法 默认字体
-        inp.onfocus = function () {
-            this.placeholder = '';
-        }
-        inp.onblur = function () {
-            this.placeholder = '搜索...';
-        }
-        //判断输入位数
-        inp.onblur = function () {
-            var remind = document.querySelector('.remind');
-            if (this.value == '') {
-                remind.children[1].innerHTML = '请输入6-10位!';
-                remind.children[0].style.backgroundColor = 'yellow';
-            }
-            else {
-                if (this.value.length < 6 || this.value.length > 10) {
-                    remind.children[1].innerHTML = '输入错误，请重新输入!';
-                    remind.children[0].style.backgroundColor = 'red';
-                    yes.disabled=true;
-                } else {
-                    remind.children[1].innerHTML = '输入正确!';
-                    remind.children[0].style.backgroundColor = 'green';
-                    yes.disabled=false;
-
-                }
-            }
-
-        }
-        //弹窗
-        var yes = document.querySelector('.yes');
-        yes.onclick = function () {
-            var i = 0;
-            while (i < 5) {
-                alert('😜');
-                i++;
-            }
-        }
-
-    </script>
+    <script src="Project.js"></script>
 </body>
 
 </html>
