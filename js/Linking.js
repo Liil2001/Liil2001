@@ -54,7 +54,7 @@ function Link() {
         Linkings.innerHTML = '<span>我这一生都是坚定不移的唯物主义者，唯有你，我希望有来生。</span>' + ' —— 「周恩来」 ';
     }
 }
-var timer = setInterval(Link, 5000);    
+var timer = setInterval(Link, 10000);    
 var LinObj={
     LinNext:function(){
         //可以在Lin消失之后停止定时器
