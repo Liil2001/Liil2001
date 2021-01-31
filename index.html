@@ -4,375 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue-音乐播放器</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background:linear-gradient(60deg,#00416A,#E4E5E6);
-            background-attachment: fixed;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        ul,
-        li {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        #app {
-            margin-top: 100px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            /* background-color: darkgrey; */
-            max-width: 900px;
-        }
-
-        .top {
-            display: flex;
-            justify-content: space-between;
-            background-color:rgb(255, 255, 255,.9);
-            width: 900px;
-            height: 50px;
-            border-radius: 3px;
-        }
-
-        .top span {
-            font-size: 30px;
-            line-height: 1.5;
-            margin-left: 30px;
-        }
-
-        .top div {
-            display: flex;
-            margin-right: 30px;
-        }
-
-        .top input {
-            background: none;
-            width: 300px;
-            height: 43px;
-            font-size: 25px;
-            outline: none;
-            border-right: none;
-            border-radius: 10px;
-        }
-
-        .top div button {
-            background: none;
-            font-size: 20px;
-            border-radius: 10px;
-            border-left: none;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .con {
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-            width: 100%;
-            background-color: rgb(0, 0, 0,.2);
-            height: 500px;
-        }
-
-        .con .mv {
-            position: absolute;
-            background-color: black;
-            width: 100%;
-            height: 92%;
-            z-index: 5;
-        }
-
-        .mv video {
-            position: relative;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 6;
-        }
-
-        .mv span {
-            position: absolute;
-            color: white;
-            z-index: 7;
-            font-size: 30px;
-            font-weight: 700;
-            right: 30px;
-            cursor: pointer;
-        }
-
-        .left::-webkit-scrollbar,
-        .con::-webkit-scrollbar,
-        .right::-webkit-scrollbar {
-            display: none;
-        }
-
-        .con .left,
-        .con .cen,
-        .con .right {
-            width: 33.3%;
-            height: 100%;
-            overflow: hidden;
-            overflow-y: auto;
-        }
-
-        .con .left {
-            border-left: 1px solid black;
-            /* background-color: bisque; */
-            /* width: 33.3%;
-            height: 100%; */
-        }
-        .left span{
-            color: whitesmoke;
-        }
-        .left ul {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: left;
-        }
-
-        .left ul li {
-            position: relative;
-            padding: 5px 5px;
-            width: 100%;
-            height: 30px;
-            border: 1px solid black;
-            border-top: none;
-            border-left: none;
-            overflow: hidden;
-            display: flex;
-            justify-content: left;
-            flex-wrap: nowrap;
-            align-items: center;
-            color: aliceblue;
-        }
-
-        .left ul li img {
-            width: 28px;
-            cursor: pointer;
-        }
-
-        .left ul li span {
-            position: absolute;
-            right: 20px;
-            color: rgb(255, 0, 0,.6);
-            font-size: 23px;
-            cursor: pointer;
-        }
-
-        .left span {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .con .cen {
-            /* background-color: cadetblue; */
-            border: 1px solid black;
-            border-top: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cen img {
-            width: 250px;
-            border-radius: 50%;
-            animation: coverRotate 10s infinite;
-        }
-
-        .playing {
-            width: 250px;
-            border-radius: 50%;
-            animation: coverRotate 0 infinite;
-        }
-
-        @keyframes coverRotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .con .right {
-            border-right: 1px solid black;
-            /* background-color: coral; */
-            /* width: 33.3%;
-            height: 100%; */
-        }
-
-        .right span {
-            font-size: 20px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .right li {
-            padding: 3px 0px;
-            color: aliceblue;
-        }
-
-        .right li img {
-            width: 20px;
-            border-radius: 50%;
-        }
-
-        .bottom {
-            width: 100%;
-            height: 50px;
-            /* background-color: darkcyan; */
-            font-size: 30px;
-            text-align: center;
-            line-height: 1.6;
-        }
-
-        .bottom audio {
-            border-radius: 0px;
-            width: 100%;
-            outline: none;
-            background-color: #f1f3f4;
-        }
-    </style>
+    <link rel="stylesheet" href="css\common.css">
+    <link rel="stylesheet" href="css\index.css">
+    <link rel="stylesheet" href="css\self_introduction .css">
+    <title>index</title>
 </head>
 
 <body>
-    <div id="app">
-        <div class="top">
-            <span>了以后播放器</span>
-            <div>
-                <input type="text" v-model="keywords" @keyup.enter="musicPlayer">
-                <button @click="musicPlayer">搜索</button>
-            </div>
+    <div class="box" onselectstart="return false">
+        <img src="images\head_portrait.jpg" alt="" id="head_por">
+        <h1>一个菜鸡罢了~</h1>
+    </div>
+    <div class="LinKing" onselectstart="return false">
+        <span>一&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp言</span>
+        即将呈现
+    </div>
+    <div class="tabBox">
+        <div class="tab">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li class="tabPre">自我介绍</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
         </div>
-        <div class="con">
-            <div class="mv" v-if="isShow">
-                <span @click="mvAppear">x</span>
-                <video :src="mvUrl" autoplay controls="controls" v-if="isShow"></video>
+        <div class="tabCon">
+            <div>1
+                <p>111</p>
             </div>
-            <div class="left">
-                <span>歌单列表</span>
-                <ul>
-                    <li v-for="(music,index) in musicList" @click="playMv(music.mvid)">
-                        <a href="#"><img src="musicplay.png" alt="" @click="playMusic(music.id)"></a>
-                        {{index+1}}:{{music.name}}{{music.artists.name}}
-                        <span :src="mvUrl" v-if="music.mvid!=0" @click="mvAppear">mv</span>
-                    </li>
-                </ul>
+            <div>2</div>
+            <div class="tabConPre" id="self_int">
+                <div id="self_intTop">
+                    <span>我是一个菜鸡</span>
+                    <span>上过小学</span>
+                    <span>上过中学</span>
+                    <span>目前正在上大学</span>
+                </div>
+                <h1 class="timeLine_name">经历</h1>
+                <div id="timeLine">
+                    <div id="lineLeft">
+                        <span>幼儿园（忘了）</span>
+                        <span>初中（六中）</span>
+                        <span>大学（南工）</span>
+                        <span>待补充...</span>
+                    </div>
+                    <div id="lineRight">
+                        <span>小学（三实小）</span>
+                        <span>高中（外高）</span>
+                        <span>待补充...</span>
+                        <span>待补充...</span>
+                    </div>
+                    <span class="lineNext">∨</span>
+                </div>
+                <div class="LearnPro">
+                    <h1>学习进度</h1>
+                    <ul>
+                        <li class="lp1">HTML
+                            <span>80%</span>
+                        </li>
+                        <li class="lp2">CSS
+                            <span>40%</span>
+                        </li>
+                        <li class="lp3">Javascript
+                            <span>20%</span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="selfintBottom">
+                    404
+                </div>
             </div>
-            <div class="cen">
-                <img :src="musicCover" alt="" :class="{palying:isPlaying}">
-            </div>
-            <div class="right">
-                <span>云村热评</span>
-                <ul>
-                    <li v-for="(reviews,index) in musicReviews">
-                        {{index+1}}.
-                        <img :src="reviews.user.avatarUrl" alt="">
-                        {{reviews.user.nickname}}:{{reviews.content}}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="bottom" @click="playMusic(music.id)">
-            <audio :src="musicUrl" autoplay controls="controls" @play="play" @pause="pause"></audio>
+            <div>4</div>
+            <div>5</div>
         </div>
     </div>
-    <script>
-        var vue = new Vue({
-            el: '#app',
-            data: {
-                keywords: '',
-                singers:[],
-                musicList: [],
-                musicUrl: '',
-                musicCover: '',
-                musicReviews: [],
-                isPlaying: false,
-                mvUrl: '',
-                isShow: false,
-            },
-            methods: {
-                //获取歌名
-                musicPlayer: function () {
-                    var that = this;
-                    axios.get("https://autumnfish.cn/search?keywords=" + this.keywords)
-                        .then(function (response) {
-                            console.log(response);
-                            that.musicList = response.data.result.songs;
-                            // console.log(response.data.result.songs.mvid);
-                        })
-                    that.isShow = false;
-                },
-                //获取歌曲url地址
-                playMusic: function (musicId) {
-                    var that = this;
-                    //歌曲地址
-                    axios.get("https://autumnfish.cn/song/url?id=" + musicId)
-                        .then(function (response) {
-                            that.musicUrl = response.data.data[0].url;
-                        }
-                            , function (err) {
-                                console.log(err);
-                            })
-                    //歌曲详情
-                    axios.get("https://autumnfish.cn/song/detail?ids=" + musicId)
-                        .then(function (response) {
-                            that.singers=response.data.songs[0].ar[0].name;
-                            that.musicCover = response.data.songs[0].al.picUrl;
-                        }, function (err) {
-
-                        })
-                    //歌曲评论
-                    axios.get("https://autumnfish.cn/comment/hot?type=0&id=" + musicId)
-                        .then(function (response) {
-                            // console.log(response.data.hotComments);
-                            that.musicReviews = response.data.hotComments;
-                        }, function (err) {
-
-                        })
-                },
-                play: function () {
-                    console.log('play');
-                    this.isPlaying = true;
-                },
-                pause: function () {
-                    console.log('pause');
-                    this.isPlaying = false;
-                },
-                //播放mv
-                playMv: function (mvId) {
-                    var that = this;
-                    axios.get("https://autumnfish.cn/mv/url?id=" + mvId)
-                        .then(function (response) {
-                            // console.log(response.data.data.url);
-                            that.mvUrl = response.data.data.url;
-                            // console.log(mvId);
-                            // console.log(that.mvUrl);
-                        })
-                },
-                //
-                mvAppear: function () {
-                    var that = this;
-                    that.isShow = !that.isShow;
-                }
-            }
-        })
-    </script>
 </body>
+<!-- 获取元素 -->
+<script src="js/variable.js"></script>
+<!-- 一言模块 -->
+<script src="js/Linking.js"></script>
+<!-- 内容模块 -->
+<script src="js/content.js"></script>
 
 </html>

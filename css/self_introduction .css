@@ -1,0 +1,294 @@
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+/* 内容栏 */
+.tabBox {
+    display: none;
+    flex-direction: column;
+    width: 1238px;
+    height: 800px;
+    position: absolute;
+    top: 340px;
+    transition: opacity 1.8s;
+}
+
+.tabBox .tab {
+    width: 100%;
+    height: 70px;
+}
+
+.tabBox .tab ul {
+    display: flex;
+    text-align: center;
+    align-items: stretch;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.tabBox .tab ul li {
+    flex: 1;
+    font-size: 30px;
+    line-height: 2.1;
+    font-weight: 700;
+    border: 1px solid seashell;
+    border-bottom: none;
+    color: aliceblue;
+}
+
+.tabPre {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    box-shadow: aliceblue 0px 0px 10px .1px;
+}
+
+.tabPre::before {
+    content: '';
+    border: 3px rgba(255, 255, 255, .6) solid;
+    border-radius: 3px;
+    border-top: none;
+    border-left: none;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: -10px;
+    transform: rotate(45deg);
+}
+
+.tabBox .tabCon {
+    width: 100%;
+    height: 730px;
+}
+
+.tabBox .tabCon div {
+    display: none;
+}
+
+.tabBox .tabCon .tabConPre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    border: 1px solid seashell;
+    border: none;
+    width: 100%;
+    height: 730px;
+    font-size: 20px;
+    color: seashell;
+}
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+/* 自我介绍模块 */
+#self_int {
+    /* 两像素用来边框 */
+    width: 1236px;
+    /* background-color: hsl(174, 72%, 56%, .2); */
+}
+
+#self_int div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#self_int #self_intTop {
+    display: flex;
+    margin: 115px 0;
+    flex-direction: column;
+    /* border: 1px red double; */
+    backdrop-filter: blur(5px);
+    text-shadow: 0px 5px 10px white;
+    font-size: 30px;
+}
+
+#self_int #self_intTop span {
+    padding: 10px;
+}
+/* 时间轴名称 */
+.timeLine_name{
+    font-size: 60px;
+    margin: 100px 0;
+    margin-bottom: 100px;
+    text-shadow:0px 0px 20px white;
+}
+#timeLine {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    /* background-color: violet; */
+    width: 80%;
+    height: 120%;
+}
+/* 时间轴中间线 */
+#timeLine::before {
+    content: '';
+    width: 5px;
+    margin-top: 25px;
+    height: 800px;
+    background-color: white;
+}
+#timeLine .lineNext{
+    position: absolute;
+    font-size: 50px;
+    font-weight: 900;
+    top: 780px;
+}
+/* 侧边时间轴 */
+#timeLine #lineLeft,
+#timeLine #lineRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex;
+    /* background-color: teal; */
+    position: absolute;
+    width: 30%;
+    height: 1000px;
+    top: 0px;
+}
+#timeLine #lineLeft {
+    top:-150px;
+    left: 50px;
+}
+#timeLine #lineRight {
+    top:-50px;
+    right: 50px;
+}
+/* 时间轴内容 */
+#lineLeft span,
+#lineRight span {
+    display: block;
+    position:relative;
+    width: 300px;
+    height: 80px;
+    background-color: white;
+    color: white;
+    text-align: center;
+    line-height: 4;
+    border: 2px solid white;
+    background: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 1.5s;
+}
+#lineLeft span{
+    margin: 60px 0px;
+}
+#lineRight span{
+    margin: 60px 0px;
+}
+#lineLeft span:hover,
+#lineRight span:hover{
+    box-shadow: inset 0px 0px 30px white;
+    text-shadow: 0px 5px 10px white;
+}
+/* timeline装饰 */
+#lineLeft span::before,
+#lineRight span::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 5px solid white;
+    border-bottom: none;
+    border-left: none;
+    position: absolute;
+    top: 34px;
+}
+#lineLeft span::before{
+    transform: rotate(45deg);
+    right: -138px;
+}
+#lineRight span::before{
+    transform: rotate(225deg);
+    left: -138px;
+}
+
+#lineLeft span::after,
+#lineRight span::after{
+    content: '';
+    width:130px;
+    border-top: 3px solid white;
+    position: absolute;
+    top: 40px;
+}
+
+#lineLeft span::after{
+    right: -132px;
+}
+#lineRight span::after{
+    left: -132px;
+}
+
+/* 学习进展 */
+.LearnPro{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 500px;
+    background-color:rgb(128, 128, 128,.1);
+    margin: 100px 0;
+    margin-bottom: 500px;
+    border-radius: 30px;
+    filter: blur(0px);
+}
+.LearnPro h1{
+    font-size: 60px;
+    margin: 100px 0;
+    margin-bottom: 100px;
+    text-shadow:0px 0px 20px white;
+}
+.LearnPro ul{
+    display: flex;
+    flex-direction: row;
+}
+.LearnPro ul li{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: rgb(0, 128, 128,.3);
+    margin: 0px 50px;
+    text-align: center;
+    font-size: 75px;
+    font-weight: 700;
+    line-height: 4;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 2s;
+}
+
+#selfintBottom{
+    width: 80%;
+    height: 500px;
+    background-color:aqua;
+}
+.LearnPro ul li span{
+    position: absolute;
+    background-color: rgb(255, 192, 203);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: rotate(90deg);
+    transform-origin: left bottom;
+    border-radius: 20px;
+    transition: 1.5s;
+}
+
+.LearnPro ul li:hover span{
+    transform: rotate(0deg);
+}
+.LearnPro ul li:hover{
+    box-shadow: 0px 0px 100px 10px;
+}
